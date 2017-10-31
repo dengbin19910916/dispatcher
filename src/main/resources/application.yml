@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: order-@project.artifactId@
+  profiles:
+    active: dev
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: configserver
+#      profile: dev
+#      label: master
+server:
+  port: 9000
+info:
+  author: dengb
+  email: 71290@topscore.com.cn
+  app:
+    name: @project.groupId@:@project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://admin:password@localhost:8761/eureka/
+#  instance:
+#    prefer-ip-address: true
+#    lease-expiration-duration-in-seconds: 10
+#    lease-renewal-interval-in-seconds: 5
+liquibase:
+  change-log: classpath:/db/changelog/db.changelog-master.xml
+  enabled: false
+---
+spring:
+  profiles: dev
+  datasource:
+     url: jdbc:h2:mem:test
+     driver-class-name: org.h2.Driver
+     username: sa
+     password:
+  jpa:
+    database: h2
+    show-sql: true
+    hibernate:
+      ddl-auto: none
