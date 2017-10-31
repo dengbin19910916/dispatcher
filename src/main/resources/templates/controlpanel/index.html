@@ -2,9 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+
+    <link rel="stylesheet" th:href="@{/css/kendo.default.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/kendo.default.mobile.min.css}"/>
+
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/kendo.all.min.js}"></script>
     <title>订单报文</title>
 </head>
 <body>
-<span th:text="123"></span>
+<input id="datetimepicker" title="datetimepicker" style="width: 200px;" />
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // create DateTimePicker from input HTML element
+        $("#datetimepicker").kendoDateTimePicker({
+            value: new Date(),
+            dateInput: true
+        });
+    });
+</script>
 </html>
