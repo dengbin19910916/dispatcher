@@ -2,7 +2,7 @@ spring:
   application:
     name: order-@project.artifactId@
   profiles:
-    active: dev
+    active: test
 #  cloud:
 #    config:
 #      discovery:
@@ -21,14 +21,6 @@ info:
     java:
       source: @java.version@
       target: @java.version@
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://admin:password@localhost:8761/eureka/
-#  instance:
-#    prefer-ip-address: true
-#    lease-expiration-duration-in-seconds: 10
-#    lease-renewal-interval-in-seconds: 5
 liquibase:
   change-log: classpath:/db/changelog/db.changelog-master.xml
   enabled: false
@@ -44,4 +36,20 @@ spring:
     database: h2
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
+---
+spring:
+  profiles: test
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://rm-2ze7143bv1kf37lu6o.mysql.rds.aliyuncs.com:3306/orderdb?useUnicode=true&characterEncoding=utf-8
+#    username: orderuser
+#    password: Topscore123
+    url: jdbc:mysql://localhost:3306/order
+    username: root
+    password: root
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: create

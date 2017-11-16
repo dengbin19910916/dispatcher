@@ -4,16 +4,17 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
     <changeSet id="1" author="dengbin">
-        <createTable tableName="original_order">
-            <column name="id" type="varchar(30)">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="data" type="varchar(1000)">
+        <createTable tableName="order_message">
+            <column name="id" type="varchar(30)"/>
+            <column name="type" type="int(2)"/>
+            <column name="content" type="varchar(2000)">
                 <constraints nullable="false"/>
             </column>
-            <column name="send_time" type="timestamp" defaultValue="CURRENT_TIMESTAMP">
+            <column name="sent_time" type="timestamp">
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <addPrimaryKey columnNames="id, type" constraintName="pk_order_message"
+                       schemaName="orderdb" tableName="order_message"/>
     </changeSet>
 </databaseChangeLog>
