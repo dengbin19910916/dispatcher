@@ -1,59 +1,87 @@
 package com.topscore.order.dispatcher.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.topscore.order.dispatcher.excel.annotation.Document;
+import com.topscore.order.dispatcher.excel.annotation.Mapped;
+import com.topscore.order.dispatcher.excel.annotation.Header;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * 订单报文。
+ *
+ * @author dengb
+ */
+@Document(name = "订单报文")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class OrderMessage {
     /**
-     * 订单主键。
+     * 订单号。
      */
-    @EmbeddedId
-    private Id id;
+    @Id
+    @Column(length = 30)
+    @Header(name = "订单号")
+    private String id;
+    /**
+     * 报文类型。
+     */
+    @Enumerated
+    @Header(name = "报文类型")
+    @Mapped(values = {
+            @Mapped.Entry(value = "TMALL", text = "天猫"),
+            @Mapped.Entry(value = "TAOBAO", text = "淘宝"),
+            @Mapped.Entry(value = "JD", text = "京东"),
+            @Mapped.Entry(value = "VIP", text = "唯品会")
+    })
+    private Type type;
     /**
      * 原始报文。
      */
+    @Lob
     private String content;
     /**
      * 报文创建的时间。
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    @Header(name = "报文创建的时间")
     private LocalDateTime createdTime;
 
     /**
      * 报文消息发给MQ的时间。
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    @Header(name = "报文消息发给MQ的时间", width = 15)
     private LocalDateTime sentTime;
 
     /**
      * 报文消息类型。
      */
     public enum Type {
-        VIP,
-        ALI,
-        JD
-    }
-
-    @Data
-    @Embeddable
-    public static class Id implements Serializable {
-        private static final long serialVersionUID = 928232073465428072L;
         /**
-         * 订单号。
+         * 天猫。
          */
-        @Column(length = 30)
-        private String id;
+        TMALL,
         /**
-         * 报文类型。
+         * 淘宝。
          */
-        @Enumerated
-        private Type type;
+        TAOBAO,
+        /**
+         * 京东。
+         */
+        JD,
+        /**
+         * 唯品会。
+         */
+        VIP
     }
 }

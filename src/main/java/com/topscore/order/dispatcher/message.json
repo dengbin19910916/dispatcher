@@ -1,0 +1,169 @@
+{
+  "trade": [
+    {
+      "tid": 17997918833064651,
+      "tid_str": "17997918833064651",
+      "status": "TRADE_CLOSED_BY_TAOBAO",
+      "type": "fixed",
+      "seller_nick": "tigrisso旗舰店",
+      "buyer_nick": "dovelt",
+      "created": "2017-07-31 23:54:20",
+      "modified": "2017-07-31 23:54:57",
+      "encrypt_alipay_id": "2088002637700193",
+      "adjust_fee": "0.00",
+      "alipay_id": 2088002637700193,
+      "alipay_no": "2017073121001001190221623878",
+      "alipay_point": 0,
+      "available_confirm_fee": "1498.00",
+      "buyer_alipay_no": "luo-tao@163.com",
+      "buyer_area": "广东广州电信",
+      "buyer_cod_fee": "0.00",
+      "buyer_email": "395126726@qq.com",
+      "buyer_ip": "MTEzLjY0LjE4NS4zMw==",
+      "buyer_obtain_point_fee": 0,
+      "buyer_rate": false,
+      "cod_fee": "0.00",
+      "cod_status": "NEW_CREATED",
+      "commission_fee": "0.00",
+      "discount_fee": "200.00",
+      "end_time": "2017-07-31 23:54:57",
+      "has_post_fee": true,
+      "is_3D": false,
+      "is_brand_sale": false,
+      "is_daixiao": false,
+      "is_force_wlb": false,
+      "is_sh_ship": false,
+      "is_lgtype": false,
+      "is_part_consign": false,
+      "is_wt": false,
+      "orders": {
+        "order": [
+          {
+            "adjust_fee": "0.00",
+            "buyer_rate": false,
+            "cid": 50012032,
+            "discount_fee": "499.00",
+            "end_time": "2017-07-31 23:54:57",
+            "is_daixiao": false,
+            "is_oversold": false,
+            "num": 1,
+            "num_iid": 549933816468,
+            "oid": 17997918834064651,
+            "order_from": "WAP,WAP",
+            "outer_iid": "TA87317-12",
+            "outer_sku_id": "6901625397664",
+            "part_mjz_discount": "105.89",
+            "payment": "899.00",
+            "pic_path": "https://img.alicdn.com/bao/uploaded/i2/1574853209/TB2vB94nYXlpuFjSszfXXcSGXXa_!!1574853209.jpg",
+            "price": "1398.00",
+            "refund_status": "NO_REFUND",
+            "seller_rate": false,
+            "seller_type": "B",
+            "sku_id": "3347938068916",
+            "sku_properties_name": "颜色分类:浅灰色;尺码:37",
+            "snapshot_url": "m:17997918834064651_1",
+            "status": "TRADE_CLOSED_BY_TAOBAO",
+            "title": "tigrisso蹀愫2017夏季TA87317-12通勤金属圆扣牛皮中跟尖头中空鞋",
+            "total_fee": "899.00"
+          },
+          {
+            "adjust_fee": "0.00",
+            "buyer_rate": false,
+            "cid": 50012027,
+            "discount_fee": "599.00",
+            "end_time": "2017-07-31 23:54:57",
+            "is_daixiao": false,
+            "is_oversold": false,
+            "num": 1,
+            "num_iid": 550178824787,
+            "oid": 17997918835064651,
+            "order_from": "WAP,WAP",
+            "outer_iid": "TA87318-53",
+            "outer_sku_id": "6901625398715",
+            "part_mjz_discount": "94.11",
+            "payment": "799.00",
+            "pic_path": "https://img.alicdn.com/bao/uploaded/i2/1574853209/TB2ocGgrhtmpuFjSZFqXXbHFpXa_!!1574853209.jpg",
+            "price": "1398.00",
+            "refund_status": "NO_REFUND",
+            "seller_rate": false,
+            "seller_type": "B",
+            "sku_id": "3515965402291",
+            "sku_properties_name": "颜色分类:黑色;尺码:37",
+            "snapshot_url": "m:17997918835064651_1",
+            "status": "TRADE_CLOSED_BY_TAOBAO",
+            "title": "tigrisso蹀愫2017夏季新品TA87318-53貂毛钻扣牛皮平跟方头中空鞋",
+            "total_fee": "799.00"
+          }
+        ]
+      },
+      "payment": "1498.00",
+      "pcc_af": 0,
+      "point_fee": 0,
+      "post_fee": "0.00",
+      "promotion_details": {
+        "promotion_detail": [
+          {
+            "discount_fee": "200.00",
+            "id": 17997918833064651,
+            "promotion_desc": "新品尝鲜200:省200.00元",
+            "promotion_id": "shopbonus-3901420424_21028405181-259056440074",
+            "promotion_name": "新品尝鲜200"
+          },
+          {
+            "discount_fee": "499.00",
+            "id": 17997918834064651,
+            "promotion_desc": "换季促销:省499.00元",
+            "promotion_id": "viptool20120502-3869305282_21013595401",
+            "promotion_name": "换季促销"
+          },
+          {
+            "discount_fee": "599.00",
+            "id": 17997918835064651,
+            "promotion_desc": "换季促销:省599.00元",
+            "promotion_id": "viptool20120502-3868965271_21007140696",
+            "promotion_name": "换季促销"
+          }
+        ]
+      },
+      "real_point_fee": 0,
+      "received_payment": "0.00",
+      "receiver_address": "曲溪街道城西东泰花园（二期）",
+      "receiver_city": "揭阳市",
+      "receiver_country": "",
+      "receiver_district": "揭东区",
+      "receiver_mobile": "13502689005",
+      "receiver_name": "徐玲玲",
+      "receiver_state": "广东省",
+      "receiver_town": "曲溪街道",
+      "receiver_zip": "515500",
+      "seller_alipay_no": "tigrisso@163.com",
+      "seller_can_rate": false,
+      "seller_cod_fee": "0.00",
+      "seller_email": "tigrisso@163.com",
+      "seller_flag": 0,
+      "seller_mobile": "13719385025",
+      "seller_name": "广州天创时尚鞋业股份有限公司",
+      "seller_rate": false,
+      "service_tags": {
+        "logistics_tag": [
+          {
+            "logistic_service_tag_list": {
+              "logistic_service_tag": [
+                {
+                  "service_tag": "origAreaId=445221;lgType=-4",
+                  "service_type": "FAST"
+                }
+              ]
+            },
+            "order_id": "17997918833064651"
+          }
+        ]
+      },
+      "shipping_type": "express",
+      "snapshot_url": "m:17997918833064651_1",
+      "title": "tigrisso旗舰店",
+      "total_fee": "2796.00",
+      "trade_from": "WAP,WAP"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/kendo.common-material.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/kendo.material.min.css}"/>
+
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/kendo.all.min.js}"></script>
+    <script th:src="@{/js/cultures/kendo.culture.zh-CN.min.js}"></script>
+    <script th:src="@{/js/messages/kendo.messages.zh-CN.min.js}"></script>
+    <script>
+        kendo.culture("zh-CN");
+    </script>
+    <style>
+        body {
+            font-size: small;
+        }
+    </style>
+    <title>订单报文</title>
+</head>
+<body>
+<label th:text="订单号" for="ids"></label>
+<input type="text" class="k-textbox" id="ids" style="width: 400px;"/>
+<br/><br/>
+<select id="timeType" title="时间类型" style="width: 100px;">
+    <option value="0">创建时间</option>
+    <option value="1">发送时间</option>
+</select>
+<label th:text="开始时间"></label>
+<input id="startTime" title="开始时间" style="width: 200px;" placeholder="请选择开始时间"/>
+<label th:text="结束时间"></label>
+<input id="endTime" title="结束时间" style="width: 200px;" placeholder="请选择结束时间"/>
+<input type="button" class="k-button k-primary" value="查询"/>
+<br/>
+<form th:action="@{/control-panel/export}">
+    <input type="submit" class="k-button" value="导出"/>
+</form>
+<br/><br/><br/>
+<div id="grid"></div>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#timeType").kendoDropDownList();
+
+        $("#startTime").kendoDateTimePicker();
+
+        $("#endTime").kendoDateTimePicker();
+
+        $("#grid").kendoGrid({
+            dataSource: {
+                type: "odata",
+                transport: {
+                    read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+                },
+                schema: {
+                    model: {
+                        fields: {
+                            OrderID: {type: "number"},
+                            Freight: {type: "number"},
+                            ShipName: {type: "string"},
+                            OrderDate: {type: "date"},
+                            ShipCity: {type: "string"}
+                        }
+                    }
+                },
+                pageSize: 20,
+                serverPaging: true,
+                serverFiltering: true,
+                serverSorting: true
+            },
+            height: 550,
+            filterable: true,
+            sortable: true,
+            pageable: true,
+            columns: [{
+                field: "OrderID",
+                filterable: false
+            },
+                "Freight",
+                {
+                    field: "OrderDate",
+                    title: "Order Date",
+                    format: "{0:MM/dd/yyyy}"
+                }, {
+                    field: "ShipName",
+                    title: "Ship Name"
+                }, {
+                    field: "ShipCity",
+                    title: "Ship City"
+                }
+            ]
+        });
+    });
+</script>
+</html>

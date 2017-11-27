@@ -3,6 +3,12 @@ spring:
     name: order-@project.artifactId@
   profiles:
     active: test
+  data:
+    rest:
+      base-path: /api
+liquibase:
+  change-log: classpath:/db/changelog/db.changelog-master.xml
+  enabled: false
 #  cloud:
 #    config:
 #      discovery:
@@ -21,9 +27,6 @@ info:
     java:
       source: @java.version@
       target: @java.version@
-liquibase:
-  change-log: classpath:/db/changelog/db.changelog-master.xml
-  enabled: false
 ---
 spring:
   profiles: dev
@@ -36,20 +39,38 @@ spring:
     database: h2
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
+  thymeleaf:
+    cache: false
 ---
 spring:
   profiles: test
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://rm-2ze7143bv1kf37lu6o.mysql.rds.aliyuncs.com:3306/orderdb?useUnicode=true&characterEncoding=utf-8
-#    username: orderuser
-#    password: Topscore123
-    url: jdbc:mysql://localhost:3306/order
+    url: jdbc:mysql://localhost:3306/order?useSSL=true
     username: root
     password: root
   jpa:
     database: mysql
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
+  thymeleaf:
+    cache: false
+  rabbitmq:
+    host: 172.16.35.78
+    username: guest
+    password: guest
+---
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rm-2ze7143bv1kf37lu6o.mysql.rds.aliyuncs.com:3306/orderdb?useUnicode=true&characterEncoding=utf-8
+    username: orderuser
+    password: Topscore123
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
