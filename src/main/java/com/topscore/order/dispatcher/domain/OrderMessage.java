@@ -2,8 +2,8 @@ package com.topscore.order.dispatcher.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.topscore.order.dispatcher.excel.annotation.Document;
-import com.topscore.order.dispatcher.excel.annotation.Mapped;
 import com.topscore.order.dispatcher.excel.annotation.Header;
+import com.topscore.order.dispatcher.excel.annotation.Mapped;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -62,6 +62,9 @@ public class OrderMessage {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", shape = JsonFormat.Shape.STRING)
     @Header(name = "报文消息发给MQ的时间", width = 15)
     private LocalDateTime sentTime;
+
+    @Header(name = "身份证号码")
+    private String idCard = "430821199111230033";
 
     /**
      * 报文消息类型。

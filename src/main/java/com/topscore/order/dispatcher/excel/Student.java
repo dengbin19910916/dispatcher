@@ -79,6 +79,9 @@ public class Student {
         this.amount10 = amount;
     }
 
+    @Header(name = "身份证号码")
+    private String idCard = "430821199111230033";
+
     @Header(name = "姓名")
     private String name;
 
