@@ -2,6 +2,7 @@ package com.topscore.order.dispatcher.excel;
 
 import com.topscore.order.dispatcher.excel.annotation.Document;
 import com.topscore.order.dispatcher.excel.annotation.Header;
+import com.topscore.order.dispatcher.excel.annotation.Mapped;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Document(name = "花名册")
 @Data
@@ -17,7 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Student {
 
-    public Student(String name, int age, LocalDateTime birthday, double grade, BigDecimal amount) {
+    public Student(String name, int age, Date birthday, double grade, BigDecimal amount) {
         this.name = name;
         this.age = age;
         this.birthday = birthday;
@@ -79,6 +80,13 @@ public class Student {
         this.amount10 = amount;
     }
 
+    @Header(name = "键值")
+    @Mapped(values = {
+            @Mapped.Entry(value = "1", text = "键值1"),
+            @Mapped.Entry(value = "2", text = "键值2")
+    })
+    private Integer key = 1;
+
     @Header(name = "身份证号码")
     private String idCard = "430821199111230033";
 
@@ -90,9 +98,9 @@ public class Student {
 
     @Header(name = "出生日期", width = 15)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime birthday;
+    private Date birthday;
 
-    @Header(name="成绩")
+    @Header(name = "成绩")
     private double grade;
 
     @Header(name = "金额")
@@ -107,9 +115,9 @@ public class Student {
 
     @Header(name = "出生日期", width = 15)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime birthday2;
+    private Date birthday2;
 
-    @Header(name="成绩")
+    @Header(name = "成绩")
     private double grade2;
 
     @Header(name = "金额")
@@ -124,9 +132,9 @@ public class Student {
 
     @Header(name = "出生日期", width = 15)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime birthday3;
+    private Date birthday3;
 
-    @Header(name="成绩")
+    @Header(name = "成绩")
     private double grade3;
 
     @Header(name = "金额")
@@ -141,9 +149,9 @@ public class Student {
 
     @Header(name = "出生日期", width = 15)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime birthday4;
+    private Date birthday4;
 
-    @Header(name="成绩")
+    @Header(name = "成绩")
     private double grade4;
 
     @Header(name = "金额")
@@ -158,9 +166,9 @@ public class Student {
 
     @Header(name = "出生日期", width = 15)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime birthday5;
+    private Date birthday5;
 
-    @Header(name="成绩")
+    @Header(name = "成绩")
     private double grade5;
 
     @Header(name = "金额")
@@ -175,9 +183,9 @@ public class Student {
 
     @Header(name = "出生日期", width = 15)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime birthday6;
+    private Date birthday6;
 
-    @Header(name="成绩")
+    @Header(name = "成绩")
     private double grade6;
 
     @Header(name = "金额")
@@ -192,9 +200,9 @@ public class Student {
 
     @Header(name = "出生日期", width = 15)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime birthday7;
+    private Date birthday7;
 
-    @Header(name="成绩")
+    @Header(name = "成绩")
     private double grade7;
 
     @Header(name = "金额")
@@ -209,9 +217,9 @@ public class Student {
 
     @Header(name = "出生日期", width = 15)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime birthday8;
+    private Date birthday8;
 
-    @Header(name="成绩")
+    @Header(name = "成绩")
     private double grade8;
 
     @Header(name = "金额")
@@ -226,9 +234,9 @@ public class Student {
 
     @Header(name = "出生日期", width = 15)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime birthday9;
+    private Date birthday9;
 
-    @Header(name="成绩")
+    @Header(name = "成绩")
     private double grade9;
 
     @Header(name = "金额")
@@ -243,9 +251,9 @@ public class Student {
 
     @Header(name = "出生日期", width = 15)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime birthday10;
+    private Date birthday10;
 
-    @Header(name="成绩")
+    @Header(name = "成绩")
     private double grade10;
 
     @Header(name = "金额")

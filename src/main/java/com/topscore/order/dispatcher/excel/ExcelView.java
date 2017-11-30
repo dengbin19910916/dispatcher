@@ -103,7 +103,9 @@ public class ExcelView extends AbstractXlsxStreamingView {
 
     @SuppressWarnings("unchecked")
     @Override
-    protected void buildExcelDocument(Map<String, Object> model, Workbook workbook, HttpServletRequest request, HttpServletResponse response) throws IllegalAccessException {
+    protected void buildExcelDocument(Map<String, Object> model, Workbook workbook,
+                                      HttpServletRequest request, HttpServletResponse response)
+            throws IllegalAccessException {
         Object content = model.get(DATA_KEY);
         if (!(content instanceof DataPump)) {
             this.dataPolicy = DataPolicy.DATA;
