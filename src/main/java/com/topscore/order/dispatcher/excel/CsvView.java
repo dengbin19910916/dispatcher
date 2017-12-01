@@ -128,11 +128,11 @@ public class CsvView extends AbstractView {
                     }
 
                     // 字段需要格式化
-                    if (formats.containsKey(field.getName())) {
+                    if (formats.containsKey(field.getName()) && value != null) {
                         value = formats.get(field.getName()).format(value);
                     }
 
-                    row.add(value.toString());
+                    row.add(value == null ? "" : value.toString());
                 }
             }
 
