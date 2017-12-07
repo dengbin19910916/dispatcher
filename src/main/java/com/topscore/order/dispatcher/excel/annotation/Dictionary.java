@@ -10,11 +10,12 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 @Documented
-public @interface Mapped {
+public @interface Dictionary {
 
-    Entry[] values();
+    Map[] values();
 
-    @interface Entry {
+    @interface Map {
+
         String value();
         String text();
     }

@@ -2,7 +2,7 @@ package com.topscore.order.dispatcher.excel;
 
 import com.topscore.order.dispatcher.excel.annotation.Document;
 import com.topscore.order.dispatcher.excel.annotation.Header;
-import com.topscore.order.dispatcher.excel.annotation.Mapped;
+import com.topscore.order.dispatcher.excel.annotation.Dictionary;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -81,9 +81,9 @@ public class Student {
     }
 
     @Header(name = "键值")
-    @Mapped(values = {
-            @Mapped.Entry(value = "1", text = "键值1"),
-            @Mapped.Entry(value = "2", text = "键值2")
+    @Dictionary(values = {
+            @Dictionary.Map(value = "1", text = "键值1"),
+            @Dictionary.Map(value = "2", text = "键值2")
     })
     private Integer key = 1;
 

@@ -2,7 +2,7 @@ package com.topscore.order.dispatcher.excel;
 
 import com.topscore.order.dispatcher.excel.annotation.Document;
 import com.topscore.order.dispatcher.excel.annotation.Header;
-import com.topscore.order.dispatcher.excel.annotation.Mapped;
+import com.topscore.order.dispatcher.excel.annotation.Dictionary;
 import com.topscore.order.dispatcher.excel.annotation.NumberFormat;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
-import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -70,12 +69,12 @@ public class ExcelView extends AbstractXlsxStreamingView {
     /**
      * Excel headers map
      */
-    private final Map<String, String> headers = new LinkedHashMap<>();
+    private final Map headers = new LinkedHashMap<>();
 
     /**
      * Data format instances
      */
-    private final Map<String, Format> formats = new HashMap<>();
+    private final Map formats = new HashMap<>();
 
     /**
      * All column width
@@ -103,7 +102,7 @@ public class ExcelView extends AbstractXlsxStreamingView {
 
     @SuppressWarnings("unchecked")
     @Override
-    protected void buildExcelDocument(Map<String, Object> model, Workbook workbook,
+    protected void buildExcelDocument(Map model, Workbook workbook,
                                       HttpServletRequest request, HttpServletResponse response)
             throws IllegalAccessException {
         Object content = model.get(DATA_KEY);
@@ -160,7 +159,7 @@ public class ExcelView extends AbstractXlsxStreamingView {
      * @param model 被注入的Model
      */
     @SuppressWarnings("unchecked")
-    private void checkParameter(Map<String, Object> model) {
+    private void checkParameter(Map model) {
         // 当没有注入类型时，注入的数据则不能为空
         // 即：当没有数据的时候必须注入TYPE
         if (!model.containsKey(TYPE)) {
@@ -189,7 +188,7 @@ public class ExcelView extends AbstractXlsxStreamingView {
      * @param model 被注入的Model
      */
     @SuppressWarnings("unchecked")
-    private void setHeaders(Sheet sheet, Map<String, Object> model) {
+    private void setHeaders(Sheet sheet, Map model) {
         if (model.containsKey("type")) {
             type = (Class<?>) model.get("type");
         } else {
@@ -199,7 +198,7 @@ public class ExcelView extends AbstractXlsxStreamingView {
         }
 
         // 自定义列宽
-        final Map<Integer, Integer> customSizes = new HashMap<>();
+        final Map customSizes = new HashMap<>();
         Field[] fields = type.getDeclaredFields();
         for (int i = 0, col = 0; i < fields.length; i++) {
             Field field = fields[i];
@@ -275,10 +274,10 @@ public class ExcelView extends AbstractXlsxStreamingView {
                 Object value = field.get(datum);
 
                 //字段值映射
-                Mapped enums = field.getDeclaredAnnotation(Mapped.class);
+                Dictionary enums = field.getDeclaredAnnotation(Dictionary.class);
                 if (enums != null) {
-                    Mapped.Entry[] ems = enums.values();
-                    for (Mapped.Entry em : ems) {
+                    Dictionary.Map[] ems = enums.values();
+                    for (Dictionary.Map em : ems) {
                         if (em.value().toLowerCase().equals(value.toString().toLowerCase())) {
                             value = em.text();
                         }

@@ -3,7 +3,7 @@ package com.topscore.order.dispatcher.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.topscore.order.dispatcher.excel.annotation.Document;
 import com.topscore.order.dispatcher.excel.annotation.Header;
-import com.topscore.order.dispatcher.excel.annotation.Mapped;
+import com.topscore.order.dispatcher.excel.annotation.Dictionary;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,11 +35,11 @@ public class OrderMessage {
      */
     @Enumerated
     @Header(name = "报文类型")
-    @Mapped(values = {
-            @Mapped.Entry(value = "TMALL", text = "天猫"),
-            @Mapped.Entry(value = "TAOBAO", text = "淘宝"),
-            @Mapped.Entry(value = "JD", text = "京东"),
-            @Mapped.Entry(value = "VIP", text = "唯品会")
+    @Dictionary(values = {
+            @Dictionary.Map(value = "TMALL", text = "天猫"),
+            @Dictionary.Map(value = "TAOBAO", text = "淘宝"),
+            @Dictionary.Map(value = "JD", text = "京东"),
+            @Dictionary.Map(value = "VIP", text = "唯品会")
     })
     private Type type;
     /**

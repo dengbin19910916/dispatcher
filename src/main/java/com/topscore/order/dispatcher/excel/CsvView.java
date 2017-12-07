@@ -1,6 +1,6 @@
 package com.topscore.order.dispatcher.excel;
 
-import com.topscore.order.dispatcher.excel.annotation.Mapped;
+import com.topscore.order.dispatcher.excel.annotation.Dictionary;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.AbstractView;
 
@@ -10,10 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Field;
 import java.text.Format;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.topscore.order.dispatcher.excel.Excels.*;
 
@@ -41,8 +38,10 @@ import static com.topscore.order.dispatcher.excel.Excels.*;
  *
  * @author dengb
  * @see DataPump
+ * @see AbstractView
  * @see org.springframework.ui.Model
  * @see org.springframework.web.servlet.ModelAndView
+ * @see org.springframework.web.servlet.View
  */
 @Component
 public class CsvView extends AbstractView {
@@ -80,6 +79,7 @@ public class CsvView extends AbstractView {
 
         PrintWriter writer = response.getWriter();
 
+        // header
         fillHeader(headers, writer);
 
         // body
@@ -117,10 +117,10 @@ public class CsvView extends AbstractView {
                     Object value = field.get(datum);
 
                     //字段值映射
-                    Mapped enums = field.getDeclaredAnnotation(Mapped.class);
+                    Dictionary enums = field.getDeclaredAnnotation(Dictionary.class);
                     if (enums != null) {
-                        Mapped.Entry[] ems = enums.values();
-                        for (Mapped.Entry em : ems) {
+                        Dictionary.Map[] ems = enums.values();
+                        for (Dictionary.Map em : ems) {
                             if (em.value().toLowerCase().equals(value.toString().toLowerCase())) {
                                 value = em.text();
                             }
